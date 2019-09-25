@@ -32,7 +32,7 @@ main(){
     mkdir -p "$NOTES_DIRECTORY/${COURSE}"
     (
         cd "$NOTES_DIRECTORY/${COURSE}" 
-        nvim "$NAME"
+        nvim "${NAME%.md}.md"
     )
 }
 
