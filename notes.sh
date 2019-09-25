@@ -36,7 +36,8 @@ main(){
     )
 }
 
-options=$(getopt -l "help,init,list:,,verbose,dir" -o "dvhil:" -- "$@")
+if [[ $# -le 0 ]]; then usage && exit 0; fi
+options=$(getopt -l "help,init,list:,verbose,dir" -o "dvhil:" -- "$@")
 
 
 # set --:
