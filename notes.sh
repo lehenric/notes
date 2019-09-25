@@ -9,12 +9,12 @@ init() {
 }
 usage() {
   cat 1>&2 << "EOF"
-Usage $0 OPTIONS [COURSE] NAME
+Usage: notes [ OPTIONS ] COURSE [ NAME ]
 OPTIONS:
-  --help  prints this help
-  --init  initializes notes directory from config
-  --list COURSE   list course notes
-  -d,--dir prints directory of NOTES and exits
+  -h,--help  prints this help
+  -i,--init  initializes notes directory from config
+  -l,--list COURSE   list course notes
+  -d,--dir prints  directory of NOTES and exits
 EOF
 }
 
