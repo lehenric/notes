@@ -51,8 +51,18 @@ generate() {
     )
 }
 
+browse() {
+    (
+    cd $NOTES_DIRECTORY/html
+    # FIXME wait for server startup and then call xdg-open - might be resolved via next FIXME
+    xdg-open http://localhost:1337
+    # FIXME redo serving htmls - no need for python but lazy to implement
+    python3 -m http.server 1337
+    )
+}
+
 if [[ $# -le 0 ]]; then usage && exit 0; fi
-options=$(getopt -l "gen-docs,help,init,list:,verbose,dir" -o "gdvhil:" -- "$@")
+options=$(getopt -l "gen-docs,browse,help,init,list:,verbose,dir" -o "gbdvhil:" -- "$@")
 
 
 # set --:
@@ -86,6 +96,10 @@ do
       ;;
     -g|--gen-docs)
       generate $2
+      exit 0
+      ;;
+    -b|--browse)
+      browse
       exit 0
       ;;
     --)
