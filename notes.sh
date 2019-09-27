@@ -15,10 +15,12 @@ usage() {
   cat 1>&2 << "EOF"
 Usage: notes [ OPTIONS ] COURSE [ NAME ]
 OPTIONS:
-  -h,--help  prints this help
-  -i,--init  initializes notes directory from config
-  -l,--list COURSE   list course notes
-  -d,--dir prints  directory of NOTES and exits
+  -h,--help - prints this help
+  -i,--init - initializes notes directory from config
+  -l,--list [ COURSE ]  - list course notes
+  -d,--dir - prints  directory of NOTES and exits
+  -g,--gen-docs [ COURSE ] -  generates htmls from mds
+  -b,--browse - browse generated htmls
 EOF
 }
 
