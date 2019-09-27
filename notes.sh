@@ -5,6 +5,7 @@
 
 NOTES_DIRECTORY="${HOME}/notes/school"
 # css file used for html generation
+# if you dont want to use CSS_FILE keep it empty
 export CSS_FILE=$(readlink -f "$0"/pandoc.css)
 
 init() {
