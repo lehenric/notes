@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 # vi:syntax=sh
 
+# script to help taking notes with {n,}vim
+
 NOTES_DIRECTORY="${HOME}/notes/school"
+# css file used for html generation
+export CSS_FILE=$(readlink -f "$0"/pandoc.css)
 
 init() {
   mkdir -p "$NOTES_DIRECTORY"
-
 }
+
 usage() {
   cat 1>&2 << "EOF"
 Usage: notes [ OPTIONS ] COURSE [ NAME ]
@@ -36,8 +40,19 @@ main(){
     )
 }
 
+# optional 1 parameter - course
+generate() {
+    COURSE="$1"
+    [[ "$COURSE" == "--" ]] && COURSE=""
+    mkdir -p $NOTES_DIRECTORY/html
+    (
+        cd "$NOTES_DIRECTORY/$COURSE"
+        find . -type f -name "*md" -exec sh -euc 'mkdir -p $2/$(dirname $1); pandoc --css $3 -o $2/${1%md}.html $1' sh {} $NOTES_DIRECTORY/html $CSS_FILE \;
+    )
+}
+
 if [[ $# -le 0 ]]; then usage && exit 0; fi
-options=$(getopt -l "help,init,list:,verbose,dir" -o "dvhil:" -- "$@")
+options=$(getopt -l "gen-docs,help,init,list:,verbose,dir" -o "gdvhil:" -- "$@")
 
 
 # set --:
@@ -67,6 +82,10 @@ do
       ;;
     -i|--init)
       init
+      exit 0
+      ;;
+    -g|--gen-docs)
+      generate $2
       exit 0
       ;;
     --)
