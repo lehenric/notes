@@ -53,7 +53,7 @@ generate() {
     mkdir -p $NOTES_DIRECTORY/html
     (
         cd "$NOTES_DIRECTORY/$COURSE"
-        find . -type f -name "*md" -exec sh -euc 'mkdir -p $2/$(dirname $1); pandoc --css $3 -o $2/${1%md}.html $1' sh {} $NOTES_DIRECTORY/html "$CSS_FILE" \;
+        find . -type f -name "*md" -exec sh -euc 'set -eu;mkdir -p $2/$(dirname $1); pandoc --css $3 -o $2/${1%md}html $1' sh {} $NOTES_DIRECTORY/html "$CSS_FILE" \;
     )
 }
 
