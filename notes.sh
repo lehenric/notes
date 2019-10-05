@@ -58,13 +58,12 @@ generate() {
 }
 
 browse() {
-    (
-    cd $NOTES_DIRECTORY/html
-    # FIXME wait for server startup and then call xdg-open - might be resolved via next FIXME
-    xdg-open http://localhost:1337
-    # FIXME redo serving htmls - no need for python but lazy to implement
-    python3 -m http.server 1337
-    )
+    html_dir="file://$NOTES_DIRECTORY/html"
+    if [[ -n $BROWSER ]]; then
+        $BROWSER "$html_dir"
+    else
+        xdg-open "$html_dir"
+    fi
 }
 
 if [[ $# -le 0 ]]; then usage && exit 0; fi

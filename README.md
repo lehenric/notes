@@ -7,7 +7,6 @@ Shell script for set of tasks to ease note taking and viewing.
 * [ nvim ](https://neovim.io/) - I'm too lazy to setup variable for vim/nvim variation
 * [ lsd ](https://github.com/Peltoche/lsd) - same as above - but `lsd` is really nice looking
 * [ pandoc](https://pandoc.org/) - for generating htmls
-* python3 - no need for python but lazy to implement browsing via custom htmls for clickable links for now
 
 ## Setup
 
@@ -25,5 +24,12 @@ For example:
 
 ```sh
 CSS_FILE=$(readlink -f "$0"/pandoc.css)
+```
+
+`BROWSER` variable is used for default browser to open, if left empty, `xdg-open` will be executed
+For example:
+
+```sh
+export BROWSER='firefox'
 ```
 
