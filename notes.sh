@@ -32,7 +32,7 @@ EOF
 list() {
     COURSE="$1"
     [[ "$COURSE" == "--" ]] && COURSE=""
-    lsd -la "$NOTES_DIRECTORY/${COURSE}"
+    ls -la "$NOTES_DIRECTORY/${COURSE}"
 }
 
 # takes COURSE and NAME as parameters

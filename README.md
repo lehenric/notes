@@ -5,7 +5,6 @@ Shell script for set of tasks to ease note taking and viewing.
 ## Requirements
 
 * [ nvim ](https://neovim.io/) - I'm too lazy to setup variable for vim/nvim variation
-* [ lsd ](https://github.com/Peltoche/lsd) - same as above - but `lsd` is really nice looking
 * [ pandoc](https://pandoc.org/) - for generating htmls
 
 ## Setup
