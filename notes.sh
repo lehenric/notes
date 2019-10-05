@@ -2,11 +2,14 @@
 # vi:syntax=sh
 
 # script to help taking notes with {n,}vim
+BASEDIR=$( cd "$( dirname "$0" )" && pwd )
 
-NOTES_DIRECTORY="${HOME}/notes/school"
+export NOTES_DIRECTORY="${HOME}/notes/school"
+export BROWSER='firefox'
+
 # css file used for html generation
 # if you dont want to use CSS_FILE keep it empty
-export CSS_FILE=$(readlink -f "$0"/pandoc.css)
+export CSS_FILE=$BASEDIR/pandoc.css
 
 init() {
   mkdir -p "$NOTES_DIRECTORY"
