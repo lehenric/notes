@@ -67,13 +67,13 @@ browse() {
 }
 
 if [[ $# -le 0 ]]; then usage && exit 0; fi
-options=$(getopt -l "gen-docs,browse,help,init,list:,verbose,dir" -o "gbdvhil:" -- "$@")
+options=$(getopt -l "gen-docs,browse,help,init,list::,verbose,dir" -o "gbdvhil::" -- "$@")
 
 
+set -euo pipefail
 # set --:
 # If no arguments follow this option, then the positional parameters are unset. Otherwise, the positional parameters 
 # are set to the arguments, even if some of them begin with a ‘-’.
-set -euo pipefail
 eval set -- "$options"
 
 while true
@@ -92,7 +92,7 @@ do
        exit 0
        ;;
     -l|--list)
-      list "$2"
+      [[ $# -ge 2 ]] && list "$2"
       exit 0
       ;;
     -i|--init)
