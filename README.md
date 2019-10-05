@@ -4,7 +4,6 @@ Shell script for set of tasks to ease note taking and viewing.
 
 ## Requirements
 
-* [ nvim ](https://neovim.io/) - I'm too lazy to setup variable for vim/nvim variation
 * [ pandoc](https://pandoc.org/) - for generating htmls
 
 ## Setup
@@ -30,5 +29,12 @@ For example:
 
 ```sh
 export BROWSER='firefox'
+```
+
+`EDITOR` variable is used for default editor to open, if left empty, `$VISUAL` will be used
+For example:
+
+```sh
+export EDITOR='nvim'
 ```
 

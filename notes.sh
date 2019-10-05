@@ -6,6 +6,7 @@ BASEDIR=$( cd "$( dirname "$0" )" && pwd )
 
 export NOTES_DIRECTORY="${HOME}/notes/school"
 export BROWSER='firefox'
+export EDITOR='nvim'
 
 # css file used for html generation
 # if you dont want to use CSS_FILE keep it empty
@@ -42,7 +43,11 @@ main(){
     mkdir -p "$NOTES_DIRECTORY/${COURSE}"
     (
         cd "$NOTES_DIRECTORY/${COURSE}" 
-        nvim "${NAME%.md}.md"
+        if [[ -n $BROWSER ]]; then
+            $EDITOR "${NAME%.md}.md"
+        else
+            $VISUAL "${NAME%.md}.md"
+        fi
     )
 }
 
